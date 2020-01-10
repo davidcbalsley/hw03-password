@@ -8,6 +8,7 @@ function generatePassword() {
   var includeLowerCaseChars = false;  // Whether to include lowercase letters in password
   var includeUpperCaseChars = false;  // Whether to include uppercase letters in password
   
+  // Prompt the user to enter the number of characters for the password
   do {
     numCharsForPassword = prompt("Please enter the number of characters for your password. Please note that the number of characters must be between 8 and 128.");
     console.log("Num chars: " + numCharsForPassword); // Debug
@@ -22,8 +23,22 @@ function generatePassword() {
   while ((numCharsForPassword < 8) ||
          (numCharsForPassword > 128) ||
          (isNaN(numCharsForPassword)));
-  //        (typeof numCharsForPassword !== "number"));
 
+  // Confirm whether to include special characgers in the password
+  includeSpecialChars = confirm("Click OK to confirm including special characters.");
+  console.log("includeSpecialChars: " + includeSpecialChars); // Debug
+
+  // Confirm whether to include numbers in the password
+  includeNumericChars = confirm("Click OK to confirm including numbers.");
+  console.log("includeNumericChars: " + includeNumericChars); // Debug
+
+  // Confirm whether to include lowercase letters in the password
+  includeLowerCaseChars = confirm("Click OK to confirm including lowercase letters.");
+  console.log("includeLowerCaseChars: " + includeLowerCaseChars); // debug
+
+  // Confirm whether to include uppercase letters in the password
+  includeUpperCaseChars = confirm("Click OK to confirm including uppercase letters.");
+  console.log("includeUpperCaseChars: " + includeUpperCaseChars); // debug
 
 }
 
