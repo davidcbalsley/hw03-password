@@ -44,6 +44,7 @@ function generatePassword() {
 
     if (!includeSpecialChars && !includeNumericChars && !includeLowerCaseChars && !includeUpperCaseChars) {
       // Alert the user that they need to select at least one category of characters
+      alert("Please choose at least one category of characters.");
     }
 
   }
