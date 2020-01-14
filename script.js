@@ -1,5 +1,6 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
+var copyToClipboardBtn = document.querySelector("#copy-to-clipboard");
 
 var charsForPassword = [
   {
@@ -110,10 +111,21 @@ function writePassword() {
 }
 
 function copyToClipboard() {
-  // BONUS 
+  // I adapted this code from https://www.w3schools.com/howto/howto_js_copy_clipboard.asp
+
+  // Get the text field
+  var passwordEl = document.querySelector("#password");
+
+  // Select the contents of the text field
+  passwordEl.select();
+  passwordEl.setSelectionRange(0, 99999);
+
+  // Copy the text inside the text field to the clipboard
+  document.execCommand("copy");
 }
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
 
 // BONUS EVENT LISTENER
+copyToClipboardBtn.addEventListener("click", copyToClipboard);
