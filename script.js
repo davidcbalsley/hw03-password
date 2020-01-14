@@ -7,6 +7,7 @@ function generatePassword() {
   var includeNumericChars = false;    // Whether to include numbers in password
   var includeLowerCaseChars = false;  // Whether to include lowercase letters in password
   var includeUpperCaseChars = false;  // Whether to include uppercase letters in password
+  var newPassword = "";               // The new password that we are creating
   
   // Prompt the user to enter the number of characters for the password
   do {
@@ -24,7 +25,7 @@ function generatePassword() {
          (numCharsForPassword > 128) ||
          (isNaN(numCharsForPassword)));
 
-
+  // Prompt the user to pick the types of characters to include in the password
   do {
     // Confirm whether to include special characters in the password
     includeSpecialChars = confirm("Click OK to confirm including special characters.");
@@ -49,6 +50,14 @@ function generatePassword() {
 
   }
   while (!includeSpecialChars && !includeNumericChars && !includeLowerCaseChars && !includeUpperCaseChars);
+
+  while (newPassword.length < numCharsForPassword) {
+    // Randomly choose next category of characters
+
+    // Get random character from category and append it to new password
+  }
+
+  return newPassword;
 }
 
 // Write password to the #password input
