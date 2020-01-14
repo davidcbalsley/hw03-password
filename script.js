@@ -3,11 +3,32 @@ var generateBtn = document.querySelector("#generate");
 
 function generatePassword() {
   var numCharsForPassword = 0;        // Number of characters in the password
-  var includeSpecialChars = false;    // Whether to include special characters in password
-  var includeNumericChars = false;    // Whether to include numbers in password
-  var includeLowerCaseChars = false;  // Whether to include lowercase letters in password
-  var includeUpperCaseChars = false;  // Whether to include uppercase letters in password
+  // var includeSpecialChars = false;    // Whether to include special characters in password
+  // var includeNumericChars = false;    // Whether to include numbers in password
+  // var includeLowerCaseChars = false;  // Whether to include lowercase letters in password
+  // var includeUpperCaseChars = false;  // Whether to include uppercase letters in password
   var newPassword = "";               // The new password that we are creating
+  var numSelectedCharCategories = 0;  // The number of categories of characters the user has selected
+  var includeCurrentCharCategory = false; // Whether the user has elected to include the current category of characters
+
+  var charsForPassword = [
+    {
+      descriptor: "special characters",
+      values: "!#$%&()*+-./:;?@~"
+    },
+    {
+      descriptor: "numbers",
+      values: "0123456789"
+    },
+    {
+      descriptor: "lowercase letters",
+      values: "abcdefghijklmnopqrstuvwxyz"
+    },
+    {
+      descriptor: "uppercase letters",
+      values: "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+    }
+  ];
   
   // Prompt the user to enter the number of characters for the password
   do {
@@ -27,29 +48,48 @@ function generatePassword() {
 
   // Prompt the user to pick the types of characters to include in the password
   do {
-    // Confirm whether to include special characters in the password
-    includeSpecialChars = confirm("Click OK to confirm including special characters.");
-    console.log("includeSpecialChars: " + includeSpecialChars); // Debug
+    console.log("do while for picking types of chars"); // debug
 
-    // Confirm whether to include numbers in the password
-    includeNumericChars = confirm("Click OK to confirm including numbers.");
-    console.log("includeNumericChars: " + includeNumericChars); // Debug
-
-    // Confirm whether to include lowercase letters in the password
-    includeLowerCaseChars = confirm("Click OK to confirm including lowercase letters.");
-    console.log("includeLowerCaseChars: " + includeLowerCaseChars); // debug
-
-    // Confirm whether to include uppercase letters in the password
-    includeUpperCaseChars = confirm("Click OK to confirm including uppercase letters.");
-    console.log("includeUpperCaseChars: " + includeUpperCaseChars); // debug
-
-    if (!includeSpecialChars && !includeNumericChars && !includeLowerCaseChars && !includeUpperCaseChars) {
-      // Alert the user that they need to select at least one category of characters
-      alert("Please choose at least one category of characters.");
+    for (var i = 0; i < charsForPassword.length; i++) {
+      console.log("for loop for confirming categories"); // debug
+      includeCurrentCharCategory = confirm("Click OK to confirm including " + charsForPassword[i].descriptor + ".");
+      
+      if (includeCurrentCharCategory) {
+        numSelectedCharCategories++;
+        console.log("numSelectedCharCategories: " + numSelectedCharCategories);
+      }
     }
 
+    // If user has not selected a category of characters, show an alert
+    if (numSelectedCharCategories === 0) {
+      alert("Please choose at least one category of characters.");
+    }
   }
-  while (!includeSpecialChars && !includeNumericChars && !includeLowerCaseChars && !includeUpperCaseChars);
+  while (numSelectedCharCategories === 0);
+
+    // Confirm whether to include special characters in the password
+    // includeSpecialChars = confirm("Click OK to confirm including special characters.");
+    // console.log("includeSpecialChars: " + includeSpecialChars); // Debug
+
+    // Confirm whether to include numbers in the password
+    // includeNumericChars = confirm("Click OK to confirm including numbers.");
+    // console.log("includeNumericChars: " + includeNumericChars); // Debug
+
+    // Confirm whether to include lowercase letters in the password
+    // includeLowerCaseChars = confirm("Click OK to confirm including lowercase letters.");
+    // console.log("includeLowerCaseChars: " + includeLowerCaseChars); // debug
+
+    // Confirm whether to include uppercase letters in the password
+    // includeUpperCaseChars = confirm("Click OK to confirm including uppercase letters.");
+    // console.log("includeUpperCaseChars: " + includeUpperCaseChars); // debug
+
+    // if (!includeSpecialChars && !includeNumericChars && !includeLowerCaseChars && !includeUpperCaseChars) {
+      // Alert the user that they need to select at least one category of characters
+    //   alert("Please choose at least one category of characters.");
+    // }
+
+  // }
+  // while (!includeSpecialChars && !includeNumericChars && !includeLowerCaseChars && !includeUpperCaseChars);
 
   while (newPassword.length < numCharsForPassword) {
     // Randomly choose next category of characters
