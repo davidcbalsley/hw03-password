@@ -29,8 +29,8 @@ function getRandomChar(charTypeIndex) {
 
   // Get a random index into the values array
   valueIndex = getRandomInt(charsForPassword[charTypeIndex].values.length - 1);
-  console.log("charTypeIndex: " + charTypeIndex); // debug
-  console.log("valueIndex: " + valueIndex); // debug
+  // console.log("charTypeIndex: " + charTypeIndex); // debug
+  // console.log("valueIndex: " + valueIndex); // debug
 
   return charsForPassword[charTypeIndex].values[valueIndex];
 }
@@ -47,7 +47,7 @@ function generatePassword() {
   // Prompt the user to enter the number of characters for the password
   do {
     numCharsForPassword = prompt("Please enter the number of characters for your password. Please note that the number of characters must be between 8 and 128.");
-    console.log("Num chars: " + numCharsForPassword); // Debug
+    // console.log("Num chars: " + numCharsForPassword); // Debug
 
     // If input value is unacceptable, alert the user
     if ((numCharsForPassword < 8) || (numCharsForPassword > 128)) {
@@ -70,9 +70,9 @@ function generatePassword() {
       
       if (includeCurrentCharCategory) {
         indicesForSelectedCharCategories.push(i);
-        console.log("indicesForSelectedCharCategories: " + indicesForSelectedCharCategories); // debug
+        // console.log("indicesForSelectedCharCategories: " + indicesForSelectedCharCategories); // debug
         numSelectedCharCategories++;
-        console.log("numSelectedCharCategories: " + numSelectedCharCategories); // debug
+        // console.log("numSelectedCharCategories: " + numSelectedCharCategories); // debug
       }
     }
 
@@ -86,13 +86,13 @@ function generatePassword() {
   while (newPassword.length < numCharsForPassword) {
     // Randomly choose the next category of characters
     randomCharIndex = indicesForSelectedCharCategories[getRandomInt(numSelectedCharCategories)];
-    console.log("randomCharIndex: " + randomCharIndex); // debug
+    // console.log("randomCharIndex: " + randomCharIndex); // debug
 
     // Get random character from category and append it to new password
     nextCharForPassword = getRandomChar(randomCharIndex);
-    console.log("nextCharForPassword: " + nextCharForPassword); // debug
+    // console.log("nextCharForPassword: " + nextCharForPassword); // debug
     newPassword += nextCharForPassword;
-    console.log("newPassword: " + newPassword); // debug
+    // console.log("newPassword: " + newPassword); // debug
   }
 
   return newPassword;
