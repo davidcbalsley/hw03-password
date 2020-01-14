@@ -11,7 +11,7 @@ function getRandomInt(maxValue) {
 function getRandomChar(inputString) {
   var valueIndex = 0;   // Randomly generated index into string
 
-  // Get a random index into the values array
+  // Get a random index into the string
   valueIndex = getRandomInt(inputString.length - 1);
 
   return inputString[valueIndex];
