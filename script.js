@@ -2,10 +2,12 @@
 var generateBtn = document.querySelector("#generate");
 var copyBtn = document.querySelector("#copy-to-clipboard");
 
+// Get a random integer between 0 and a given value
 function getRandomInt(maxValue) {
   return Math.floor(Math.random() * maxValue);
 }
 
+// Get a randomly chosen character for a given string
 function getRandomChar(inputString) {
   var valueIndex = 0;   // Randomly generated index into string
 
