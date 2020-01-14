@@ -1,4 +1,4 @@
-# hw03-password
+# Password Generator
 Our third homework assignment: random password generator.
 
 <img src="src/images/Password_generator_screenshot.png">
