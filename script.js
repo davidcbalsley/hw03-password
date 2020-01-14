@@ -1,8 +1,38 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
 
+var charsForPassword = [
+  {
+    descriptor: "special characters",
+    values: "!#$%&()*+-./:;?@~"
+  },
+  {
+    descriptor: "numbers",
+    values: "0123456789"
+  },
+  {
+    descriptor: "lowercase letters",
+    values: "abcdefghijklmnopqrstuvwxyz"
+  },
+  {
+    descriptor: "uppercase letters",
+    values: "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+  }
+];
+
 function getRandomInt(maxValue) {
   return Math.floor(Math.random() * maxValue);
+}
+
+function getRandomChar(charTypeIndex) {
+  var valueIndex = 0;   // Index into the values array for the current object
+
+  // Get a random index into the values array
+  valueIndex = getRandomInt(charsForPassword[charTypeIndex].values.length - 1);
+  console.log("charTypeIndex: " + charTypeIndex); // debug
+  console.log("valueIndex: " + valueIndex); // debug
+
+  return charsForPassword[charTypeIndex].values[valueIndex];
 }
 
 function generatePassword() {
@@ -11,26 +41,8 @@ function generatePassword() {
   var numSelectedCharCategories = 0;          // The number of categories of characters the user has selected
   var includeCurrentCharCategory = false;     // Whether the user has elected to include the current category of characters
   var indicesForSelectedCharCategories = [];  // The indices in 'charsForPassword' for the categories that the user has selected
-  var randomCharIndex = 0;                    // Randomly generated index into indicesForSelectedCharCategories
-
-  var charsForPassword = [
-    {
-      descriptor: "special characters",
-      values: "!#$%&()*+-./:;?@~"
-    },
-    {
-      descriptor: "numbers",
-      values: "0123456789"
-    },
-    {
-      descriptor: "lowercase letters",
-      values: "abcdefghijklmnopqrstuvwxyz"
-    },
-    {
-      descriptor: "uppercase letters",
-      values: "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-    }
-  ];
+  var randomCharIndex = 0;                    // Randomly generated index into indicesForSelectedCharCategories 
+  var nextCharForPassword = "";               // The next char to append to the end of the password
   
   // Prompt the user to enter the number of characters for the password
   do {
@@ -58,9 +70,9 @@ function generatePassword() {
       
       if (includeCurrentCharCategory) {
         indicesForSelectedCharCategories.push(i);
-        console.log("indicesForSelectedCharCategories: " + indicesForSelectedCharCategories);
+        console.log("indicesForSelectedCharCategories: " + indicesForSelectedCharCategories); // debug
         numSelectedCharCategories++;
-        console.log("numSelectedCharCategories: " + numSelectedCharCategories);
+        console.log("numSelectedCharCategories: " + numSelectedCharCategories); // debug
       }
     }
 
@@ -73,12 +85,14 @@ function generatePassword() {
 
   while (newPassword.length < numCharsForPassword) {
     // Randomly choose the next category of characters
-    randomCharIndex = getRandomInt(numSelectedCharCategories);
-    console.log("randomCharIndex: " + randomCharIndex);
+    randomCharIndex = indicesForSelectedCharCategories[getRandomInt(numSelectedCharCategories)];
+    console.log("randomCharIndex: " + randomCharIndex); // debug
 
     // Get random character from category and append it to new password
-
-    newPassword += "a";
+    nextCharForPassword = getRandomChar(randomCharIndex);
+    console.log("nextCharForPassword: " + nextCharForPassword); // debug
+    newPassword += nextCharForPassword;
+    console.log("newPassword: " + newPassword); // debug
   }
 
   return newPassword;
