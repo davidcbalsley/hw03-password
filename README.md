@@ -11,6 +11,8 @@ This website will generate a password, to the length specified by the user, usin
 
 The user starts by pressing the 'Generate Password' button. The website then prompts the user to enter the length for the password -- at least 8 characters, but not more than 128 characters.
 
-The website asks the user to confirm
+The website asks the user to confirm which categories of characters to use for the password: special characters, numbers, and lowercase and uppercase letters. If the user does not choose any of these categories, the website alerts them that they need to pick at least one.
+
+Then, the website generates and displays the password. It enables the 'Copy to 
 
 https://davidcbalsley.github.io/hw03-password/
