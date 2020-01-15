@@ -1,7 +1,7 @@
 # Password Generator
 This repository houses the 
 
-![Screenshot for password generator](src/images/Password_generator_screenshot.png)]
+![Screenshot for password generator](src/images/password-generator-screenshot.png)]
 
 ### Purpose
 
